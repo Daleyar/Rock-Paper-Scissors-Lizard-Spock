@@ -31,4 +31,3 @@ class Game:
         print("Spock smashes Scissors",end ="Scissors decapitates Lizard")
     def game_type(self):
         pass
-
