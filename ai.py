@@ -2,32 +2,26 @@
 # Author: Ali Daley & Samuel LP McKnight
 # Project:RPSLS
 # Created: August 13th 2021
-
-
-
 from player import Player
 import random
 
-class AI:
+class AI(Player):
     def __init__(self):
-        super.__int__()
-        self.permant_name()
-
-    def permant_name(self):
-        self.name = "AI"
+        super().__init__()
 
     def choose_gesture(self):
-        self.choice = random.randint(0,4)
-        if(self.choice == 0):
-            return 'Rock'
-        elif(self.choice == 1):
-            return 'Paper'
-
-
-
-
-    def setting_score(self):
-        self.wins += 1       
+        print("AI is selecting a gesture")
+        self.choice = random.choice(self.gesture_list)
+        if(self.choice == "rock"):
+            print(f"AI selects {self.choice}")
+        elif(self.choice == "paper"):
+            print(f"AI selects {self.choice}")
+        elif(self.choice == "scissors"):
+            print(f"AI selects {self.choice}")
+        elif(self.choice == "lizard"):
+            print(f"AI selects {self.choice}")
+        elif(self.choice == "Spock"):
+            print(f"AI selects {self.choice}")      
 
 
         
