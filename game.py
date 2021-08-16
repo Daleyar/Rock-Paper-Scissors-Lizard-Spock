@@ -17,8 +17,14 @@ class Game:
         self.display_rules()
         self.game_type()
         #game rounds
-        self.game_round_timer()
-        self.round_start()
+        while True:
+            self.game_round_timer()
+            self.round_start()
+            self.round_outcome()
+            play_again = input("Play again? 'y' or 'n': ")
+            if play_again.lower() != "y":
+                break
+
     
     def welcome(self):
         print("Welcome to Rock Paper Scissors Lizard Spock!")
@@ -55,3 +61,52 @@ class Game:
         self.player_two = AI()
         self.player_two.name = 'Player'
         self.player_two.choose_gesture()
+
+    def round_outcome(self):
+        if self.player_one.choice == self.player_two.choice:
+            print(f"Both players selected {self.player_one.choice}. It's a tie!")       
+        elif self.player_one.choice == "rock":
+            if self.player_two.choice == "scissors":
+                print("Rock crushes scissors! You win!")
+            elif self.player_two.choice == "lizard":
+                print("Rock crushes lizard! You win!")
+            elif self.player_two.choice == "spock":
+                print("Spock vaporizes rock! You lose.")
+            else:
+                print("Paper covers rock! You lose.")       
+        elif self.player_one.choice == "paper":
+            if self.player_two.choice == "rock":
+                print("Paper covers rock! You win!")
+            elif self.player_two.choice == "spock":
+                print("Paper disproves spock! You win!")
+            elif self.player_two.choice == "lizard":
+                print("Lizard eats paper! You lose.")
+            else:
+                print("Scissors cuts paper! You lose.")        
+        elif self.player_one.choice == "scissors":
+            if self.player_two.choice == "paper":
+                print("Scissors cuts paper! You win!")
+            elif self.player_two.choice == "lizard":
+                print("Scissors decapitates lizard! You win!")
+            elif self.player_two.choice == "spock":
+                print("Spock smashes scissors! You lose.")
+            else:
+                print("Rock crushes scissors! You lose.")
+        elif self.player_one.choice == "lizard":
+            if self.player_two.choice == "spock":
+                print("Lizard poisons spock! You win!")
+            elif self.player_two.choice == "paper":
+                print("Lizard eats paper! You win!")
+            elif self.player_two.choice == "rock":
+                print("Rock crushes lizard! You lose.")
+            else:
+                print("Scissors decapitates lizard! You lose.")
+        elif self.player_one.choice == "spock":
+            if self.player_two.choice == "scissors":
+                print("Spock smashes scissors! You win!")
+            elif self.player_two.choice == "rock":
+                print("Spock vaporizes rock! You win!")
+            elif self.player_two.choice == "paper":
+                print("Paper disaproves spock! You lose.")
+            else:
+                print("Lizard poisons spock! You lose.")
