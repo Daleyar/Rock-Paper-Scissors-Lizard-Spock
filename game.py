@@ -2,7 +2,6 @@
 # Author: Ali Daley & Samuel LP McKnight
 # Project:RPSLS
 # Created: August 13th 2021
-from typing import Counter
 from ai import AI
 from human import Human
 
@@ -12,16 +11,13 @@ class Game:
         self.player_two = None
 
     def run_game(self):
-        #setup
         self.welcome()
         self.display_rules()
         self.game_type()
-        #game rounds
         while True:
             self.game_round_timer()
-            self.player_one_turn()
-            self.player_two_turn()
-            self.ai_turn()
+            self.player_one.choose_gesture()
+            self.player_two.choose_gesture()
             self.round_outcome()
             self.display_winners()
             if (self.display_winners == True):
@@ -30,7 +26,6 @@ class Game:
             if play_again.lower() != "y":
                 break
 
-    
     def welcome(self):
         print("Welcome to Rock Paper Scissors Lizard Spock!")
     
@@ -41,7 +36,7 @@ class Game:
         print("Scissors cuts Paper\nPaper covers Rock\nRock crushes Lizard\nLizard poisons Spock\nSpock smashes Scissors\nScissors decapitates Lizard\nLizard eats Paper\nPaper disproves Spock\nSpock vaporizes Rock\nRock crushes Scissors")
 
     def game_type(self):
-        game_selection = input("Would you like to play to SinglePlayer or MultiPlayer?\nPress 's' for SinglePlayer or 'm' for MultiPlayer")
+        game_selection = input("Would you like to play to SinglePlayer or MultiPlayer?\nPress 's' for SinglePlayer or 'm' for MultiPlayer ")
         if(game_selection.lower() == 's'):
             print('You have selected SinglePlayer')
             self.player_two = AI()
@@ -52,30 +47,10 @@ class Game:
             print("try again")
             self.game_type()
 
-    def game_round_timer(self):
+    def game_round_timer(self): #needs fixing doesnt acutally count
         round_count = 0
-        round_count += 1
+        round_count = 1
         print(f"Round {round_count} Start!")
-
-    def player_one_turn(self):
-        print("Player 1 turn")
-        self.player_one.choose_gesture()
-        chosen_gesture = int(input())
-        self.player_one.choice = self.player_one.gesture_list[chosen_gesture]
-        print(f"Player 1 selects {self.player_one.choice}!")
-
-    def player_two_turn(self):
-        if(self.player_two == Human()):
-            print("Player 2 turn")
-            self.player_two.choose_gesture()
-            chosen_gesture = int(input())
-            self.player_two.choice = self.player_two.gesture_list[chosen_gesture] 
-            print(f"Player 2 selects {self.player_two.choice}!")
-
-    def ai_turn(self):
-        if(self.player_two == AI()):
-            self.player_two.choose_gesture()
-            print(f"Player AI selects {self.player_two.choice}")
 
     def round_outcome(self):
         if self.player_one.choice == self.player_two.choice:
@@ -146,7 +121,7 @@ class Game:
                 print("Lizard poisons spock! You lose.")
                 self.player_two.score = self.score_counter
 
-    def score_counter(self):
+    def score_counter(self): #needs fixing doesnt acutally count
         counter = 0
         counter += 1
 
