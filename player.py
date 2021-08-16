@@ -4,6 +4,7 @@
 # Created: August 13th 2021
 class Player:
     def __init__(self):
+        self.name = ""
         self.score = 0
         self.choice = ""
         self.gesture_list = ["rock","paper","scissors","lizard","spock"]
@@ -15,4 +16,14 @@ class Player:
             print(f"Press {index} for {gesture}")
             index += 1
         self.choice = self.gesture_list[int(input())]
-        print(f"Player 1 selects {self.choice}!")
+        print(f"{self.name} selects {self.choice}!")
+
+    def define_name(self, player):
+        while True:
+            defined_name = input("What is your name? ")
+            if defined_name.isalpha():
+                print(f"Your name is now {defined_name.capitalize()}")
+                player.name = defined_name.capitalize()
+                break
+            else:
+                print("Please refrain from using numbers")

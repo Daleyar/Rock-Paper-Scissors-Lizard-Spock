@@ -12,15 +12,18 @@ class AI(Player):
     def choose_gesture(self):
         self.choice = random.choice(self.gesture_list)
         if(self.choice == "rock"):
-            print(f"AI selects {self.choice}!")
+            print(f"Player 2 selects {self.choice}!")
         elif(self.choice == "paper"):
-            print(f"AI selects {self.choice}!")
+            print(f"Player 2 selects {self.choice}!")
         elif(self.choice == "scissors"):
-            print(f"AI selects {self.choice}!")
+            print(f"Player 2 selects {self.choice}!")
         elif(self.choice == "lizard"):
-            print(f"AI selects {self.choice}!")
-        elif(self.choice == "Spock"):
-            print(f"AI selects {self.choice}!")      
+            print(f"Player 2 selects {self.choice}!")
+        elif(self.choice == "spock"):
+            print(f"Player 2 selects {self.choice}!")
+
+    def define_name(self, player):
+        pass  
 
 
         
