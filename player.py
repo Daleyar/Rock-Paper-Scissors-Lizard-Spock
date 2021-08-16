@@ -15,4 +15,5 @@ class Player:
         for gesture in self.gesture_list:
             print(f"Press {index} for {gesture}")
             index += 1
-        self.choice = self.gesture_list[int(input())]
+        
+        #self.choice = self.gesture_list[int(input())]

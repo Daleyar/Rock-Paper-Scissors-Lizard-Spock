@@ -10,18 +10,18 @@ class AI(Player):
         super().__init__()
 
     def choose_gesture(self):
-        print("AI is selecting a gesture")
+        #print("AI is selecting a gesture")
         self.choice = random.choice(self.gesture_list)
         if(self.choice == "rock"):
-            print(f"AI selects {self.choice}")
+            print(f"AI selects {self.choice}!")
         elif(self.choice == "paper"):
-            print(f"AI selects {self.choice}")
+            print(f"AI selects {self.choice}!")
         elif(self.choice == "scissors"):
-            print(f"AI selects {self.choice}")
+            print(f"AI selects {self.choice}!")
         elif(self.choice == "lizard"):
-            print(f"AI selects {self.choice}")
+            print(f"AI selects {self.choice}!")
         elif(self.choice == "Spock"):
-            print(f"AI selects {self.choice}")      
+            print(f"AI selects {self.choice}!")      
 
 
         
