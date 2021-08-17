@@ -9,6 +9,7 @@ class Game:
     def __init__(self):
         self.player_one = Human()
         self.player_two = None
+        self.round_count = 1
 
     def run_game(self):
         self.welcome()
@@ -16,18 +17,19 @@ class Game:
         self.game_type()
         self.player_one.define_name(self.player_one)
         self.player_two.define_name(self.player_two)
-        while True:
-            #self.game_round_timer()
+        while (self.player_one.score) < 2 and (self.player_one.score) < 2:
+            self.game_round_timer()
             self.player_one.choose_gesture()
             self.player_two.choose_gesture()
             self.round_outcome()
             self.display_score()
             self.display_winners()
-            if (self.display_winners == True):
+            if(self.player_one.score) == 2 and (self.player_one.score) == 2:
                 break
             play_again = input("Ready for the next round? 'y' or 'n': ")
             if play_again.lower() != "y":
-                break
+                self.run_game
+        self.game_over()
 
     def welcome(self):
         print("Welcome to Rock Paper Scissors Lizard Spock!")
@@ -50,10 +52,9 @@ class Game:
             print("try again")
             self.game_type()
 
-    #def game_round_timer(self): #needs fixing doesnt acutally count
-     #   round_count = 0
-      #  round_count = 1
-    #    print(f"Round {round_count} Start!")
+    def game_round_timer(self):
+        print(f"Round {self.round_count} Start!")
+        self.round_count += 1
 
     def round_outcome(self):
         if self.player_one.choice == self.player_two.choice:
@@ -61,78 +62,81 @@ class Game:
         elif self.player_one.choice == "rock":
             if self.player_two.choice == "scissors":
                 print(f"Rock crushes scissors! {self.player_one.name} wins this round!")
-                self.player_one.score = self.score_counter
+                self.player_one.score += 1
             elif self.player_two.choice == "lizard":
                 print(f"Rock crushes lizard! {self.player_one.name} wins this round!")
-                self.player_one.score = self.score_counter
+                self.player_one.score += 1
             elif self.player_two.choice == "spock":
                 print(f"Spock vaporizes rock! {self.player_one.name} loses this round.")
-                self.player_two.score = self.score_counter
+                self.player_two.score += 1
             elif self.player_two.choice == "paper":
                 print(f"Paper covers rock! {self.player_one.name} loses this round.") 
-                self.player_two.score = self.score_counter      
+                self.player_two.score += 1      
         elif self.player_one.choice == "paper":
             if self.player_two.choice == "rock":
                 print(f"Paper covers rock! {self.player_one.name} wins this round!")
-                self.player_one.score = self.score_counter
+                self.player_one.score += 1
             elif self.player_two.choice == "spock":
                 print(f"Paper disproves spock! {self.player_one.name} wins this round!")
-                self.player_one.score = self.score_counter
+                self.player_one.score += 1
             elif self.player_two.choice == "lizard":
                 print(f"Lizard eats paper! {self.player_one.name} loses this round.")
-                self.player_two.score = self.score_counter
+                self.player_two.score += 1
             elif self.player_two.choice == "scissors":
                 print(f"Scissors cuts paper! {self.player_one.name} loses this round.")
-                self.player_two.score = self.score_counter      
+                self.player_two.score += 1     
         elif self.player_one.choice == "scissors":
             if self.player_two.choice == "paper":
                 print(f"Scissors cuts paper! {self.player_one.name} wins this round!")
-                self.player_one.score = self.score_counter
+                self.player_one.score += 1
             elif self.player_two.choice == "lizard":
                 print(f"Scissors decapitates lizard! {self.player_one.name} wins this round!")
-                self.player_one.score = self.score_counter
+                self.player_one.score += 1
             elif self.player_two.choice == "spock":
                 print(f"Spock smashes scissors! {self.player_one.name} loses this round.")
-                self.player_two.score = self.score_counter
+                self.player_two.score += 1
             elif self.player_two.choice == "rock":
                 print(f"Rock crushes scissors! {self.player_one.name} lose this round.")
-                self.player_two.score = self.score_counter
+                self.player_two.score += 1
         elif self.player_one.choice == "lizard":
             if self.player_two.choice == "spock":
                 print(f"Lizard poisons spock! {self.player_one.name} wins this round!")
-                self.player_one.score = self.score_counter
+                self.player_one.score += 1
             elif self.player_two.choice == "paper":
                 print(f"Lizard eats paper! {self.player_one.name} wins this round!")
-                self.player_one.score = self.score_counter
+                self.player_one.score += 1
             elif self.player_two.choice == "rock":
                 print(f"Rock crushes lizard! {self.player_one.name} loses this round.")
-                self.player_two.score = self.score_counter
+                self.player_two.score += 1
             elif self.player_two.choice == "scissors":
                 print(f"Scissors decapitates lizard! {self.player_one.name} loses this round.")
-                self.player_two.score = self.score_counter
+                self.player_two.score += 1
         elif self.player_one.choice == "spock":
             if self.player_two.choice == "scissors":
                 print(f"Spock smashes scissors! {self.player_one.name} wins this round!")
-                self.player_one.score = self.score_counter
+                self.player_one.score += 1
             elif self.player_two.choice == "rock":
                 print(f"Spock vaporizes rock! {self.player_one.name} wins this round!")
-                self.player_one.score = self.score_counter
+                self.player_one.score += 1
             elif self.player_two.choice == "paper":
                 print(f"Paper disaproves spock! {self.player_one.name} loses this round.")
-                self.player_two.score = self.score_counter
+                self.player_two.score += 1
             elif self.player_two.choice == "lizard":
                 print(f"Lizard poisons spock! {self.player_one.name} loses this round.")
-                self.player_two.score = self.score_counter
-
-    def score_counter(self): #needs fixing doesnt acutally count
-        counter = 0
-        counter += 1
+                self.player_two.score += 1
 
     def display_score(self):
         print(f"The score is {self.player_one.score}-{self.player_two.score}")
 
     def display_winners(self):
         if (self.player_one.score == 2):
-             print("Player 1 wins!")
+            print(f"{self.player_one.name} wins!")
         elif (self.player_two.score == 2):
-            print("Player 1 loses!") 
+            print(f"{self.player_two.name} wins!")
+
+    def game_over(self):
+        another_game = input("Are you up for another game? 'y' or 'n': ")
+        if(another_game.lower()) == "y":
+            self.run_game()
+        elif(another_game.lower()) != "y":
+            pass
